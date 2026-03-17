@@ -1,9 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "mcp-trace"
 version = "0.0.1"
-
+description = "Local-first MCP server for inspecting a single agent run."
+readme = "README.md"
+requires-python = ">=3.10"
 dependencies = [
   "mcp",
   "pydantic",
-  "pydantic-settings"
+  "pydantic-settings",
+  "sqlmodel",
 ]
+
+[project.scripts]
+mcp-trace = "mcp_trace.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
